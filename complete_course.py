@@ -154,7 +154,7 @@ class Udemy:
 
             return self.course
         except StopIteration:
-            print('failed to retrieve course data. make sure that the token is valid')
+            cprint('failed to retrieve course data. make sure that the token is valid', 'red')
 
     def complete_lecture(self, lecture_id):
         try:
@@ -165,7 +165,7 @@ class Udemy:
                 headers=self.headers, json=data)
             return response.status_code // 100 == 2
         except Exception as e:
-            print(e)
+            cprint(e, 'red')
             return False
 
     def get_quiz_stats(self, quiz_id, quiz_attempt_id):
@@ -173,7 +173,7 @@ class Udemy:
             f'https://{self.subdomain}.udemy.com/api-2.0/users/me/subscribed-courses/{self.course_id}/quizzes/{quiz_id}/user-attempted-quizzes/{quiz_attempt_id}/stats/',
             headers=self.headers
         )
-        print(response.text)
+        # print(response.text)
 
     def attempt_quiz(self, quiz_id, quiz_version=1):
         params = (
@@ -286,7 +286,7 @@ def complete_this_course(course_url, token, client_id):
 
         # complete quizzes
         for quiz_index, quiz in enumerate(chapter['quizzes']):
-            print(quiz)
+            # print(quiz)
             if quiz['type'] == 'coding-exercise' or quiz['type'] == 'practice-test':
                 # if this is a coding exercise, then leave it to be completed by ticking the checkbox
                 #  TODO:  complete the coding exercise with proper API
@@ -327,7 +327,7 @@ def complete_this_course(course_url, token, client_id):
     if completed_percentage == 100:
         return 100
 
-    print('attempting to complete rest of the resources...')
+    cprint('attempting to complete rest of the resources...', 'blue')
     for chapter_index, chapter in enumerate(udemy.course):
         resources = chapter['quizzes'] + chapter['lectures'] + chapter['others']
         for res_idx, res in enumerate(resources):
