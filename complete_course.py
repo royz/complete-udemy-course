@@ -54,7 +54,7 @@ class Udemy:
                 'name': me['display_name'],
                 'email': me['email']
             }
-            print(f"logged in as: {self.account['name']} ({self.account['email']})")
+            cprint(f"logged in as: {self.account['name']} ({self.account['email']})", 'blue', attrs=['reverse'])
         except:
             cprint('token is invalid or expired', 'red')
 
