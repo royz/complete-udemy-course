@@ -325,7 +325,6 @@ def complete_this_course(course_url, token, client_id):
     time.sleep(5)
     completed_percentage = udemy.get_completed_materials()
     if completed_percentage == 100:
-        cprint('course is 100% complete', 'green')
         return 100
 
     print('attempting to complete rest of the resources...')
