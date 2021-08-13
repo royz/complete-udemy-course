@@ -63,7 +63,7 @@ class Udemy:
         matches = re.match(r'(https://)(.*)(\.udemy.com/course/)(.*)(/learn/.*/)(\d+)', url)
         if not matches:
             cprint(f'invalid url: {url}', 'red')
-            return
+            quit()
         match_groups = matches.groups()
         self.subdomain = match_groups[1]
         self.url = match_groups[3]
