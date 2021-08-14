@@ -289,7 +289,7 @@ def complete_this_course(course_url, token, client_id):
             # print(quiz)
             if quiz['type'] == 'coding-exercise' or quiz['type'] == 'practice-test':
                 # if this is a coding exercise, then leave it to be completed by ticking the checkbox
-                #  TODO:  complete the coding exercise with proper API
+                #  TODO: complete the coding exercise with proper API
                 continue
 
             if quiz['id'] in udemy.completed_materials:
